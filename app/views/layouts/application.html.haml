@@ -8,5 +8,9 @@
     = csrf_meta_tags
   %body
     .container
-      = render partial: 'layouts/navigation'
+      .row
+        = render partial: 'layouts/navigation'
+    .container
+      .row 
+        = render partial: 'layouts/messages'
       = yield

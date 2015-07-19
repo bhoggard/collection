@@ -1,0 +1,12 @@
+%h3 Login
+
+= simple_form_for :session, url: do_login_url do |f|
+
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, autofocus: true
+    = f.input :password
+
+  .form-actions
+    = f.button :submit, 'Login'
