@@ -26,7 +26,7 @@ module Admin
       @nationality = Nationality.new(nationality_params)
 
       if @nationality.save
-        redirect_to [:admin, @nationality],
+        redirect_to admin_nationalities_url,
                     notice: 'Nationality was successfully created.'
       else
         render :new
@@ -36,7 +36,7 @@ module Admin
     # PATCH/PUT /nationalities/1
     def update
       if @nationality.update(nationality_params)
-        redirect_to [:admin, @nationality],
+        redirect_to admin_nationalities_url,
                     notice: 'Nationality was successfully updated.'
       else
         render :edit
@@ -47,7 +47,7 @@ module Admin
     def destroy
       @nationality.destroy
       redirect_to admin_nationalities_url,
-                  notice: 'Nationality was successfully destroyed.'
+                  notice: 'Nationality was successfully deleted.'
     end
 
     private

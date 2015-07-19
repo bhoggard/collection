@@ -28,4 +28,5 @@ end
 group :test do
   gem 'codeclimate-test-reporter'
   gem 'minitest-rg'
+  gem 'minitest-rails-capybara'
 end
