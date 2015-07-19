@@ -1,0 +1,20 @@
+Documentation:
+  Enabled: false
+
+StringLiterals:
+  Enabled: false
+
+# Metrics/ClassLength:
+#   Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+  - test/**/*
+
+AllCops:
+  Exclude:
+  - bin/*
+  - db/**/*
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile

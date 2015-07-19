@@ -4,3 +4,12 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+task(:default).clear
+task default: ['test', :rubocop]
+
+task :rubocop do
+  require 'rubocop'
+  cli = RuboCop::CLI.new
+  cli.run(%w(-D --auto-correct --rails))
+end
