@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'haml-rails'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -26,4 +27,5 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter'
+  gem 'minitest-rg'
 end

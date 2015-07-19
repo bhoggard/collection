@@ -1,0 +1,19 @@
+%h3 Listing nationalities
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+
+  %tbody
+    - @nationalities.each do |nationality|
+      %tr
+        %td= nationality.name
+        %td= link_to 'Edit', edit_admin_nationality_path(nationality)
+        %td= link_to 'Delete', [:admin, nationality], method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Nationality', new_admin_nationality_path

@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @nationality] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, autofocus: true
+
+  .form-actions
+    = f.button :submit
