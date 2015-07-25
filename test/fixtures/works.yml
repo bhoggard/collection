@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+photo:
+  title: MyString
+  artist: james
+  work_year: 1998
+  work_display_date: 
+  dimensions: 8 x 10 inches
+  medium: C-print
+  edition: 
+  acquisition_year: 1998
+  description: 
+  provenance: 
+  price_paid: 
+  private_notes: 
+  missing_information: 
+  market_value: 1
+  market_value_year: 1
+  location: flatfiles
+  category_id: 1
+  featured: false
+  image_source: the artist
+  published: true
+

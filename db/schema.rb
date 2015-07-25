@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725173754) do
+ActiveRecord::Schema.define(version: 20150725195652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20150725173754) do
   add_index "artists", ["name"], name: "index_artists_on_name", unique: true, using: :btree
   add_index "artists", ["sort_name"], name: "index_artists_on_sort_name", using: :btree
 
+  create_table "locations", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  add_index "locations", ["name"], name: "index_locations_on_name", unique: true, using: :btree
+
   create_table "nationalities", force: :cascade do |t|
     t.string "name"
   end
@@ -55,4 +61,41 @@ ActiveRecord::Schema.define(version: 20150725173754) do
 
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
+  create_table "works", force: :cascade do |t|
+    t.string   "title",               default: "",    null: false
+    t.integer  "artist_id",                           null: false
+    t.integer  "work_year"
+    t.string   "work_display_date"
+    t.string   "dimensions"
+    t.text     "medium"
+    t.string   "edition"
+    t.integer  "acquisition_year"
+    t.text     "description"
+    t.text     "provenance"
+    t.integer  "price_paid"
+    t.text     "private_notes"
+    t.string   "missing_information"
+    t.integer  "market_value"
+    t.integer  "market_value_year"
+    t.integer  "location_id",                         null: false
+    t.string   "category_id",                         null: false
+    t.boolean  "featured",            default: false, null: false
+    t.string   "image_source"
+    t.boolean  "published",           default: true,  null: false
+    t.string   "tags",                default: [],                 array: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "works", ["artist_id"], name: "index_works_on_artist_id", using: :btree
+  add_index "works", ["category_id"], name: "index_works_on_category_id", using: :btree
+  add_index "works", ["featured"], name: "index_works_on_featured", using: :btree
+  add_index "works", ["location_id"], name: "index_works_on_location_id", using: :btree
+  add_index "works", ["published"], name: "index_works_on_published", using: :btree
+  add_index "works", ["tags"], name: "index_works_on_tags", using: :gin
+  add_index "works", ["title"], name: "index_works_on_title", using: :btree
+  add_index "works", ["work_year"], name: "index_works_on_work_year", using: :btree
+
+  add_foreign_key "works", "artists"
+  add_foreign_key "works", "locations"
 end

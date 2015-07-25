@@ -23,7 +23,7 @@ end
 namespace :legacy do
   task import: :environment do
     conn = PG.connect(dbname: 'collection_legacy')
-    %w(Nationality Artist).each do |klass|
+    %w(Nationality Artist Location).each do |klass|
       run_import(conn, klass.constantize)
     end
   end
