@@ -31,3 +31,7 @@ group :test do
   gem 'minitest-rg'
   gem 'minitest-rails-capybara'
 end
+
+group :production do
+  gem 'newrelic_rpm'
+end

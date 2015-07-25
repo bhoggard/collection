@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20150725195652) do
   add_index "artists", ["name"], name: "index_artists_on_name", unique: true, using: :btree
   add_index "artists", ["sort_name"], name: "index_artists_on_sort_name", using: :btree
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
   end
@@ -78,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150725195652) do
     t.integer  "market_value"
     t.integer  "market_value_year"
     t.integer  "location_id",                         null: false
-    t.string   "category_id",                         null: false
+    t.integer  "category_id",                         null: false
     t.boolean  "featured",            default: false, null: false
     t.string   "image_source"
     t.boolean  "published",           default: true,  null: false
@@ -97,5 +103,6 @@ ActiveRecord::Schema.define(version: 20150725195652) do
   add_index "works", ["work_year"], name: "index_works_on_work_year", using: :btree
 
   add_foreign_key "works", "artists"
+  add_foreign_key "works", "categories"
   add_foreign_key "works", "locations"
 end

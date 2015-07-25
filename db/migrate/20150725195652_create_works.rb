@@ -17,7 +17,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :market_value
       t.integer :market_value_year
       t.references :location, index: true, foreign_key: true, null: false
-      t.string :category_id, null: false
+      t.references :category, index: true, foreign_key: true, null: false
       t.boolean :featured, null: false, default: false
       t.string :image_source
       t.boolean :published, null: false, default: true
@@ -26,7 +26,6 @@ class CreateWorks < ActiveRecord::Migration
     end
     add_index :works, :title
     add_index :works, :work_year
-    add_index :works, :category_id
     add_index :works, :published
     add_index :works, :featured
     add_index :works, :tags, using: :gin
