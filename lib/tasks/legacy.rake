@@ -1,13 +1,22 @@
+require 'activerecord-import/base'
+ActiveRecord::Import.require_adapter('pg')
+
+def run_import(conn, klass)
+  klass.delete_all
+  objects = []
+  conn.exec("SELECT * FROM #{klass.table_name}") do |result|
+    result.each do |row|
+      objects << klass.new(row)
+    end
+  end
+  klass.import objects
+end
+
 namespace :legacy do
   task import: :environment do
-    Nationality.delete_all
     conn = PG.connect(dbname: 'collection_legacy')
-    conn.exec("SELECT * FROM nationalities") do |result|
-      result.each do |row|
-        nationality = Nationality.new(name: row['name'])
-        nationality.id = row['id']
-        nationality.save!
-      end
+    %w(Nationality).each do |klass|
+      run_import(conn, klass.constantize)
     end
   end
 end
