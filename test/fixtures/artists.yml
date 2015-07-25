@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+james:
+  name: James Wagner
+  sort_name: Wagner
+  home_page: http://jameswagner.com/
+  birth_year: 1940
+  gender: male
+  death_year:
+  notes: co-founder of the collection
+  show_large_images: true
+  email: james@hoggardwagner.org
+  telephone: 212-555-555
+  address: West 23rd Street
+  private_notes: something secret
+  missing_information: 
+  nationality: us
+
+isolde:
+  name: Isolde Woelfel
+  sort_name: Woelfel
+  home_page: 
+  birth_year: 1902
+  gender: female
+  death_year: 1999
+  notes: 
+  show_large_images: false
+  email: 
+  telephone: 
+  address: 
+  private_notes: 
+  missing_information: home page
+  nationality: de

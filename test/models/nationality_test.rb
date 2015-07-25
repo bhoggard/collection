@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class NationalityTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "validity" do
+    assert nationalities(:us).valid?
+    assert nationalities(:de).valid?
+  end
 end

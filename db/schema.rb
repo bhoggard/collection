@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719190312) do
+ActiveRecord::Schema.define(version: 20150725173754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "name",                null: false
+    t.string   "sort_name",           null: false
+    t.string   "home_page"
+    t.integer  "birth_year"
+    t.string   "gender"
+    t.integer  "death_year"
+    t.text     "notes"
+    t.boolean  "show_large_images"
+    t.string   "email"
+    t.string   "telephone"
+    t.text     "address"
+    t.text     "private_notes"
+    t.string   "missing_information"
+    t.integer  "nationality_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "artists", ["birth_year"], name: "index_artists_on_birth_year", using: :btree
+  add_index "artists", ["missing_information"], name: "index_artists_on_missing_information", using: :btree
+  add_index "artists", ["name"], name: "index_artists_on_name", unique: true, using: :btree
+  add_index "artists", ["sort_name"], name: "index_artists_on_sort_name", using: :btree
 
   create_table "nationalities", force: :cascade do |t|
     t.string "name"
