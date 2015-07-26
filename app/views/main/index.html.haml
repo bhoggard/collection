@@ -2,7 +2,4 @@
   = image_tag(@work.images.first.file.url(:large, false))
 .row
   %br
-  = @work.artist.name
-  %em= @work.title
-  , 
-  = work_date(@work)
+  = home_page_work(@work)

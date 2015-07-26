@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 photo:
-  title: MyString
+  title: Untitled (Vesey lines)
   artist: james
   work_year: 1998
   work_display_date: 
