@@ -18,7 +18,7 @@ photo:
   market_value_year: 1
   location: flatfiles
   category_id: 1
-  featured: false
+  featured: true
   image_source: the artist
   published: true
 

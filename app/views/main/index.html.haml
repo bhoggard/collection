@@ -1,8 +1,8 @@
 .row
-  %img{src: "/images/04cf4129bb86725e2e968a8a40d22a894fa3a0ae.jpg", width: 800}
+  = image_tag(@work.images.first.file.url(:large, false))
+.row
   %br
-  %br
-    %p 
-      Parisian Gertrude Stein, 1998
-      %br
-      Deborah Kass
+  = @work.artist.name
+  %em= @work.title
+  , 
+  = work_date(@work)
