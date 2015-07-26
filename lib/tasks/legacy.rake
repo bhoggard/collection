@@ -1,5 +1,6 @@
 require 'activerecord-import/base'
 ActiveRecord::Import.require_adapter('pg')
+require 'csv'
 
 namespace :legacy do
   task import: :environment do
@@ -10,6 +11,7 @@ namespace :legacy do
     import_works(conn)
     run_import(conn, Exhibition)
     import_exhibition_works(conn)
+    import_images(conn)
   end
 end
 
@@ -75,5 +77,23 @@ def get_tags(conn, work)
          where tag_id=tags.id and taggable_id=#{work.id} order by name"
   conn.exec(sql) do |result|
     work.tags = result.map { |i| i['name'] }
+  end
+end
+
+def import_images(conn)
+  Image.destroy_all
+  images = []
+  conn.exec("select id, work_id, caption from images") do |result|
+    result.each do |row|
+      images << Image.new(row)
+    end
+  end
+  Image.import images
+  puts "downloading images..."
+  CSV.foreach("#{ENV['HOME']}/Desktop/legacy-images.csv") do |row|
+    image = Image.find row.first.to_i
+    image.file_remote_url = row.last
+    puts image.id
+    image.save!
   end
 end

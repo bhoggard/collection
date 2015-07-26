@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725234415) do
+ActiveRecord::Schema.define(version: 20150726004918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,19 @@ ActiveRecord::Schema.define(version: 20150725234415) do
 
   add_index "exhibitions", ["end_date"], name: "index_exhibitions_on_end_date", using: :btree
   add_index "exhibitions", ["start_date"], name: "index_exhibitions_on_start_date", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "work_id",           null: false
+    t.string   "caption"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "images", ["work_id"], name: "index_images_on_work_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
@@ -127,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150725234415) do
 
   add_foreign_key "exhibition_works", "exhibitions"
   add_foreign_key "exhibition_works", "works"
+  add_foreign_key "images", "works"
   add_foreign_key "works", "artists"
   add_foreign_key "works", "categories"
   add_foreign_key "works", "locations"

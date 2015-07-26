@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -13,6 +15,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'activerecord-import', require: false
 gem 'ranked-model'
+gem 'paperclip', '~> 4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
