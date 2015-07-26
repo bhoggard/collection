@@ -8,8 +8,9 @@ StringLiterals:
 #   Max: 120
 
 Metrics/MethodLength:
-  Max: 12
+  Max: 10
   Exclude:
+  - lib/tasks/legacy.rake
   - test/**/*
 
 AllCops:

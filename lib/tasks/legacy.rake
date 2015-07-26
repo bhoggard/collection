@@ -8,6 +8,8 @@ namespace :legacy do
       run_import(conn, klass.constantize)
     end
     import_works(conn)
+    run_import(conn, Exhibition)
+    import_exhibition_works(conn)
   end
 end
 
@@ -31,7 +33,7 @@ def transform_row(klass, row)
 end
 
 def import_works(conn)
-  Work.delete_all
+  return if Work.count > 0
   works = []
   conn.exec("select * from works") do |result|
     result.each do |row|
@@ -42,6 +44,25 @@ def import_works(conn)
     end
   end
   Work.import works
+end
+
+def import_exhibition_works(conn)
+  ExhibitionWork.delete_all
+  works = []
+  position = 1
+  sql = "select exhibition_id, work_id
+         from exhibition_works, works, artists
+         where work_id=works.id and artist_id=artists.id
+         order by artists.sort_name"
+  conn.exec(sql) do |result|
+    result.each do |row|
+      work = ExhibitionWork.new(row)
+      work.position = position
+      position += 1
+      works << work
+    end
+  end
+  ExhibitionWork.import works
 end
 
 def transform_work(work)
@@ -56,4 +77,3 @@ def get_tags(conn, work)
     work.tags = result.map { |i| i['name'] }
   end
 end
-

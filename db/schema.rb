@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725195652) do
+ActiveRecord::Schema.define(version: 20150725234415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,29 @@ ActiveRecord::Schema.define(version: 20150725195652) do
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "exhibition_works", id: false, force: :cascade do |t|
+    t.integer "exhibition_id", null: false
+    t.integer "work_id",       null: false
+    t.integer "position",      null: false
+  end
+
+  add_index "exhibition_works", ["exhibition_id", "work_id"], name: "index_exhibition_works_on_exhibition_id_and_work_id", unique: true, using: :btree
+  add_index "exhibition_works", ["exhibition_id"], name: "index_exhibition_works_on_exhibition_id", using: :btree
+  add_index "exhibition_works", ["position"], name: "index_exhibition_works_on_position", unique: true, using: :btree
+  add_index "exhibition_works", ["work_id"], name: "index_exhibition_works_on_work_id", using: :btree
+
+  create_table "exhibitions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "exhibitions", ["end_date"], name: "index_exhibitions_on_end_date", using: :btree
+  add_index "exhibitions", ["start_date"], name: "index_exhibitions_on_start_date", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
@@ -102,6 +125,8 @@ ActiveRecord::Schema.define(version: 20150725195652) do
   add_index "works", ["title"], name: "index_works_on_title", using: :btree
   add_index "works", ["work_year"], name: "index_works_on_work_year", using: :btree
 
+  add_foreign_key "exhibition_works", "exhibitions"
+  add_foreign_key "exhibition_works", "works"
   add_foreign_key "works", "artists"
   add_foreign_key "works", "categories"
   add_foreign_key "works", "locations"
