@@ -12,6 +12,7 @@ namespace :legacy do
     run_import(conn, Exhibition)
     import_exhibition_works(conn)
     import_images(conn)
+    download_images
   end
 end
 
@@ -89,6 +90,9 @@ def import_images(conn)
     end
   end
   Image.import images
+end
+
+def download_images
   puts "downloading images..."
   CSV.foreach("#{ENV['HOME']}/Desktop/legacy-images.csv") do |row|
     image = Image.find row.first.to_i
