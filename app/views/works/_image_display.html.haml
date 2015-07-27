@@ -1,0 +1,4 @@
+= image_tag(image ? image.file.url(:large, false) : blank_image_url, alt: alt_text)
+- unless image.blank? || image.caption.blank?
+  %p=textilize_without_paragraph(image.caption)
+

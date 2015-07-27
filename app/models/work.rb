@@ -12,4 +12,6 @@ class Work < ActiveRecord::Base
       .where("featured = ? and published = ? and artists.show_large_images = ?",
              true, true, true)
   }
+
+  scope :visible, -> { where(published: true) }
 end

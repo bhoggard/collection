@@ -11,3 +11,31 @@ input.string, input.password {
   border-bottom: none;
   color: red;
 }
+
+
+img {
+  @extend .img-responsive
+}
+
+h5.title {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.work-details {
+  margin-top: 15px;
+}
+
+p.why {
+  padding-top: 5px;
+  width: 80%;
+}
+
+a#why-small {
+  color: red;
+  text-decoration: none;
+}
+
+.no-left-padding {
+  padding-left: 0;
+}

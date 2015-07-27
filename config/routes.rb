@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root "main#index"
 
+  resources :works, only: :show do
+    collection do
+      get 'acquire'
+      get 'recent'
+    end
+  end
+
   get "/login" => "sessions#new", :as => :login
   post "/login" => "sessions#create", :as => :do_login
   delete "/logout" => "sessions#destroy", :as => :logout

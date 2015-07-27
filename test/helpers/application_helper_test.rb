@@ -16,9 +16,7 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal "1997-2000", work_date(work)
   end
 
-  test "home_page_work" do
-    work = works(:photo)
-    assert_equal "James Wagner, <em>Untitled (Vesey lines)</em>, 1998",
-                 home_page_work(work)
+  test "textilize_without_paragraph" do
+    assert_equal "<em>Untitled</em>", textilize_without_paragraph("_Untitled_")
   end
 end

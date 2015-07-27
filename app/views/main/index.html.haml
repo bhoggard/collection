@@ -1,5 +1,9 @@
 .row
-  = image_tag(@work.images.first.file.url(:large, false))
-.row
-  %br
-  = home_page_work(@work)
+  .col-md-8.no-left-padding
+    = link_to(image_tag(@work.images.first.file.url(:large, false), alt: alt_text), @work)
+    %br
+  .col-md-4
+    %h5.title= @work.title
+    = @work.artist.name
+    %br
+    = work_date(@work)

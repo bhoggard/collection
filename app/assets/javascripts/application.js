@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+
+// for copyright notice
+$(function() {
+  $("a#why-small").click(function() {
+    if($(this).data('dont')==1) return;
+    $(this).after(' Thumbnails are shown because we do not have permission to publish larger images. ' + 
+    'If you own the publication rights to this work, please <a href="/page/contact">contact us</a>.');
+    $(this).data('dont',1);
+    return false;
+  });
+});
