@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :works, only: :show do
     collection do
       get 'acquire'
+      get 'featured'
       get 'recent'
     end
   end

@@ -37,7 +37,7 @@ module ApplicationHelper
            as: :image
   end
 
-  def alt_text
-    [@work.artist.name, @work.title].reject(&:blank?).join(', ')
+  def alt_text(work)
+    [work.artist.name, work.title].reject(&:blank?).join(', ')
   end
 end

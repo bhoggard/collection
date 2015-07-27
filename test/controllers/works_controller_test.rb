@@ -8,13 +8,19 @@ class WorksControllerTest < ActionController::TestCase
     assert_equal work, assigns(:work)
   end
 
-  test "should get recent" do
-    get :recent
+  test "should get acquire" do
+    get :acquire
     assert_response :success
   end
 
-  test "should get acquire" do
-    get :acquire
+  test "should get featured" do
+    get :featured
+    assert_response :success
+    refute_nil assigns(:works)
+  end
+
+  test "should get recent" do
+    get :recent
     assert_response :success
   end
 end

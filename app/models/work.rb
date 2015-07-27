@@ -9,8 +9,7 @@ class Work < ActiveRecord::Base
 
   scope :featured_works, lambda {
     joins(:artist, :images)
-      .where("featured = ? and published = ? and artists.show_large_images = ?",
-             true, true, true)
+      .where(featured: true, published: true, 'artists.show_large_images': true)
   }
 
   scope :visible, -> { where(published: true) }
