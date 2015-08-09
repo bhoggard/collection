@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "main#index"
 
+  resources :artists, only: [:index, :show]
+
   resources :works, only: :show do
     collection do
       get 'acquire'

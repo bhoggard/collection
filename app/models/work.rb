@@ -8,9 +8,28 @@ class Work < ActiveRecord::Base
   validates :location_id, :artist_id, :category_id, presence: true
 
   scope :featured_works, lambda {
-    joins(:artist, :images)
-      .where(featured: true, published: true, 'artists.show_large_images': true)
+    joins(:artist)
+      .includes(:artist, :images)
+      .where("(select count(id) from images where work_id=works.id) > 0
+        and published = true and artists.show_large_images = true")
   }
 
   scope :visible, -> { where(published: true) }
+
+  scope :recently_updated, lambda {
+    includes(:artist, :images)
+      .where("(select count(id) from images where work_id=works.id) > 0
+        and published = true")
+      .order('updated_at DESC')
+      .limit(20)
+  }
+
+  scope :recently_acquired, lambda {
+    includes(:artist, :images)
+      .where("(select count(id) from images where work_id=works.id) > 0
+        and published = true
+        and (extract(year from current_date) - acquisition_year) <= 1")
+      .order('acquisition_year DESC, created_at DESC')
+      .limit(20)
+  }
 end

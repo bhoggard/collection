@@ -31,3 +31,19 @@ isolde:
   private_notes: 
   missing_information: home page
   nationality: de
+
+barry:
+  name: Barry Hoggard
+  sort_name: Hoggard
+  home_page: http://bloggy.com/
+  birth_year: 1966
+  gender: male
+  death_year:
+  notes: 
+  show_large_images: true
+  email: 
+  telephone: 
+  address: 
+  private_notes: 
+  missing_information:
+  nationality: us

@@ -4,12 +4,16 @@ class WorksController < ApplicationController
   end
 
   def acquire
+    @works = Work.recently_acquired
+    render :featured
   end
 
   def recent
+    @works = Work.recently_updated
+    render :featured
   end
 
   def featured
-    @works = Work.includes(:artist).featured_works.order('artists.name').uniq
+    @works = Work.featured_works.order('artists.name')
   end
 end
