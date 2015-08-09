@@ -23,7 +23,8 @@ module ApplicationHelper
   end
 
   def blank_image_url
-    '/pixel.gif'
+    # '/pixel.gif'
+    '/gray-thumbnail.png'
   end
 
   def show_work_images
