@@ -8,7 +8,7 @@ StringLiterals:
 #   Max: 120
 
 Metrics/MethodLength:
-  Max: 10
+  Max: 15
   Exclude:
   - lib/tasks/legacy.rake
   - test/**/*

@@ -5,12 +5,10 @@ class WorksController < ApplicationController
 
   def acquire
     @works = Work.recently_acquired
-    render :featured
   end
 
   def recent
     @works = Work.recently_updated
-    render :featured
   end
 
   def featured

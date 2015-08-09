@@ -1,1 +1,31 @@
 - title 'Artists'
+
+.row
+  %h4.page-title Artists
+
+.row.artist-letters 
+
+  = link_to 'A - B', artists_path
+  |
+  = link_to 'C - E', artists_path(letters: 'cde')
+  |
+  = link_to 'F - G', artists_path(letters: 'fg')
+  |
+  = link_to 'H - K', artists_path(letters: 'hijk')
+  |
+  = link_to 'L - M', artists_path(letters: 'lm')
+  |
+  = link_to 'N - R', artists_path(letters: 'nopqr')
+  |
+  = link_to 'S - T', artists_path(letters: 'st')
+  |
+  = link_to 'U - Z', artists_path(letters: 'uvwxyz')
+
+.row
+  - @artists.each do |artist|
+    .col-md-3.col-xs-12
+      .thumbnail
+        .thumbnail-box
+          .thumbnail-wrapper
+            = artist_image(artist)
+          .caption= artist.name

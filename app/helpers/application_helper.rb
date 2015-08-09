@@ -40,4 +40,19 @@ module ApplicationHelper
   def alt_text(work)
     [work.artist.name, work.title].reject(&:blank?).join(', ')
   end
+
+  def artist_image(artist)
+    work = artist.featured_work
+    if work && work.images.any?
+      link_to(
+        image_tag(work.images.first.file.url(:thumb, false),
+                  alt: alt_text(work)),
+        artist)
+    else
+      link_to(
+        image_tag(blank_image_url,
+                  alt: artist.name),
+        artist)
+    end
+  end
 end

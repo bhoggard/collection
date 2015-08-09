@@ -17,3 +17,5 @@
 coverage
 
 public/images
+
+.DS_Store

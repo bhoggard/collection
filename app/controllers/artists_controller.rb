@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    letters = params[:letters] || 'abc'
+    letters = params[:letters] || 'ab'
     @artists = Artist.by_letters(letters)
   end
 end
