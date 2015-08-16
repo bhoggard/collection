@@ -21,11 +21,10 @@
   |
   = link_to 'U - Z', artists_path(letters: 'uvwxyz')
 
-.row
-  - @artists.each do |artist|
-    .col-md-3.col-xs-12
-      .thumbnail
-        .thumbnail-box
-          .thumbnail-wrapper
-            = artist_image(artist)
+- @artist_rows.each do |row|
+  .row.vertical-align
+    - row.each do |artist|
+      .col-xs-12
+        .thumbnail
+          = artist_image(artist)
           .caption= artist.name

@@ -1,30 +1,31 @@
 - title(alt_text(@work))
 
 .row
-  = show_work_images
-  - unless @work.artist.show_large_images?
-    %p.why
-      %a{href: '#', id: 'why-small'}= "Why #{@work.images.count > 1 ? 'are these images' : 'is this image'} small?"
-.row
-  %br
-  %h5.title= @work.title
-  = @work.artist.name
-  %br
-  = work_date(@work)
-  .work-details
-    = show_work_info(:medium)
-    = show_work_info(:dimensions)
-  .work-details
-    - if @work.provenance.present?
-      Provenance: 
-      = raw(textilize_without_paragraph(@work.provenance))
-    - if @work.acquisition_year.present?
-      %br
-      Acquisition Year: #{@work.acquisition_year}
-    %p
-      Category:
-      = @work.category.name
-  - if @work.description.present?
+  .col-md-8
+    = show_work_images
+    - unless @work.artist.show_large_images?
+      %p.why
+        %a{href: '#', id: 'why-small'}= "Why #{@work.images.count > 1 ? 'are these images' : 'is this image'} small?"
+    %br
+  .col-md-4
+    %h5.title= @work.title
+    = @work.artist.name
+    %br
+    = work_date(@work)
     .work-details
-      %h5 Description
-      = raw(textilize(@work.description))
+      = show_work_info(:medium)
+      = show_work_info(:dimensions)
+    .work-details
+      - if @work.provenance.present?
+        Provenance: 
+        = raw(textilize_without_paragraph(@work.provenance))
+      - if @work.acquisition_year.present?
+        %br
+        Acquisition Year: #{@work.acquisition_year}
+      %p
+        Category:
+        = @work.category.name
+    - if @work.description.present?
+      .work-details
+        %h5 Description
+        = raw(textilize(@work.description))

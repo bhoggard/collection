@@ -13,4 +13,12 @@ class ArtistsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal james_and_isolde, assigns(:artists).to_a
   end
+
+  test "should get show" do
+    artist = artists(:james)
+    get :show, id: artist
+    assert_response :success
+    assert_equal(artist, assigns(:artist))
+    assert_equal(artist.works, assigns(:works))
+  end
 end

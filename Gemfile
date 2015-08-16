@@ -17,6 +17,7 @@ gem 'activerecord-import', require: false
 gem 'ranked-model'
 gem 'paperclip', '~> 4.3'
 gem 'RedCloth'
+gem 'aws-sdk'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -24,6 +24,7 @@ h5.title {
 h4.page-title {
   margin-top: 0;
   margin-bottom: 15px;
+  padding-left: 15px;
 }
 
 .work-details {
@@ -38,6 +39,11 @@ p.why {
 a#why-small {
   color: red;
   text-decoration: none;
+}
+
+.navbar-default .navbar-brand {
+  padding-left: 30px;
+  font-size: 130%;
 }
 
 .no-left-padding {
@@ -65,4 +71,17 @@ a#why-small {
 .artist-letters {
   text-align: center;
   margin: 0 0 20px 0;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;     /* Align the flex-items vertically */
+  justify-content: center; /* Optional, to align inner flex-items 
+                              horizontally within the column  */
 }
