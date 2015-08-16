@@ -8,10 +8,10 @@ class ArtistsControllerTest < ActionController::TestCase
   end
 
   test "should filter by letters" do
-    james_and_isolde = [artists(:james), artists(:isolde)]
+    james_and_isolde = [[artists(:james), artists(:isolde)]]
     get :index, letters: 'wxyz'
     assert_response :success
-    assert_equal james_and_isolde, assigns(:artists).to_a
+    assert_equal james_and_isolde, assigns(:artist_rows).to_a
   end
 
   test "should get show" do
