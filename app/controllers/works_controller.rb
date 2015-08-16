@@ -4,14 +4,14 @@ class WorksController < ApplicationController
   end
 
   def acquire
-    @works = Work.recently_acquired
+    @work_rows = Work.recently_acquired.each_slice(4)
   end
 
   def recent
-    @works = Work.recently_updated
+    @work_rows = Work.recently_updated.each_slice(4)
   end
 
   def featured
-    @works = Work.featured_works.order('artists.name')
+    @work_rows = Work.featured_works.order('artists.name').each_slice(4)
   end
 end

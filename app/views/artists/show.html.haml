@@ -2,11 +2,36 @@
 
 .row
   .col-md-8
-    - @works.each do |work|
-      .col-md-3.col-xs-12
-        .thumbnail
-          = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), work)
-          .caption= work.title
-
+    - @work_rows.each do |row|
+      .row.vertical-align
+        - row.each do |work|
+          .col-xs-12
+            .thumbnail
+              = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), work)
+              .caption= work.title
   .col-md-4
     %h5.title= @artist.name
+    - if @artist.nationality.present?
+      = @artist.nationality.name
+      %br
+    - if @artist.birth_year.present? && @artist.death_year.present?
+      = "#{@artist.birth_year}-#{@artist.death_year}"
+    - else
+      - if @artist.birth_year.present?
+        b.
+        = @artist.birth_year
+      - if @artist.death_year.present?
+        d.
+        = @artist.death_year
+    - if @artist.home_page.present?
+      %br
+      = link_to('artist website', @artist.home_page, target: '_blank')
+    - if @artist.notes.present?
+      %h5 Notes
+      = auto_link(textilize(@artist.notes)) 
+
+
+
+
+
+

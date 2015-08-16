@@ -1,5 +1,7 @@
-.row
-  - @works.each do |work|
-    .col-md-3.col-xs-12.vertical-align
-      = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), work)
-      .caption= work.artist.name
+- @work_rows.each do |row|
+  .row.vertical-align
+    - row.each do |work|
+      .col-xs-12
+        .thumbnail
+          = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), work)
+          .caption= work.artist.name

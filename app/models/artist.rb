@@ -3,6 +3,7 @@ class Artist < ActiveRecord::Base
   has_many :works, -> { order 'works.work_year, works.title' },
            dependent: :destroy
   validates :name, :sort_name, presence: true
+  validates_format_of :home_page, with: URI::regexp(%w(http https)), allow_blank: true
 
   scope :by_letters, lambda { |letters|
     where('lower(left(sort_name, 1)) in (?)', letters.chars).order(:sort_name)

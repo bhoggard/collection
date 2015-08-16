@@ -6,6 +6,6 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @works = @artist.works.visible.order('work_year DESC')
+    @work_rows = @artist.works.visible.order('work_year DESC').each_slice(4)
   end
 end
