@@ -19,6 +19,6 @@ class ArtistsControllerTest < ActionController::TestCase
     get :show, id: artist
     assert_response :success
     assert_equal(artist, assigns(:artist))
-    assert_equal(artist.works, assigns(:works))
+    assert_equal([artist.works.to_a], assigns(:work_rows).to_a)
   end
 end

@@ -16,7 +16,7 @@ class WorksControllerTest < ActionController::TestCase
   test "should get featured" do
     get :featured
     assert_response :success
-    refute_nil assigns(:works)
+    refute_nil assigns(:work_rows)
   end
 
   test "should get recent" do
