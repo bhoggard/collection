@@ -9,7 +9,7 @@
     %br
   .col-md-4
     %h5.title= @work.title
-    = @work.artist.name
+    = link_to(@work.artist.name, @work.artist)
     %br
     = work_date(@work)
     .work-details
