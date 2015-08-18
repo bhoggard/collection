@@ -29,6 +29,7 @@ h4.page-title {
 
 .work-details {
   margin-top: 15px;
+  margin-bottom: 45px;
 }
 
 p.why {
@@ -82,4 +83,10 @@ a#why-small {
 .vertical-align > [class*=" col-"] {
   display: flex;
   align-items: center;     /* Align the flex-items vertically */
+}
+
+.other-works {
+  font-size: 90%;
+  margin-bottom: 15px;
+  font-weight: 400;
 }

@@ -7,7 +7,7 @@
         - row.each do |work|
           .col-xs-12
             .thumbnail
-              = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), work)
+              = work_thumbnail(work)
               .caption= work.title
   .col-md-4
     %h5.title= @artist.name

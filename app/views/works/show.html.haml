@@ -1,7 +1,7 @@
 - title(alt_text(@work))
 
 .row
-  .col-md-8
+  .col-md-7
     = show_work_images
     - unless @work.artist.show_large_images?
       %p.why
@@ -29,3 +29,13 @@
       .work-details
         %h5 Description
         = raw(textilize(@work.description))
+  .col-md-1
+    - if @additional_works.any?
+      .row
+        .col-xs-12.other-works
+          Other Works
+        - @additional_works.each do |work|
+          .col-xs-12
+            .thumbnail
+              = work_thumbnail(work)
+              .caption= truncate(work.title)

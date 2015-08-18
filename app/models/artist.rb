@@ -1,6 +1,6 @@
 class Artist < ActiveRecord::Base
   belongs_to :nationality
-  has_many :works, -> { order 'works.work_year, works.title' },
+  has_many :works, -> { order 'work_year, title' },
            dependent: :destroy
   validates :name, :sort_name, presence: true
   validates :home_page, format: URI.regexp(%w(http https)), allow_blank: true

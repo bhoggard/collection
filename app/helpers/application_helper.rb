@@ -56,4 +56,18 @@ module ApplicationHelper
         artist)
     end
   end
+
+  def work_thumbnail(work)
+    if work.images.any?
+      link_to(
+        image_tag(work.images.first.file.url(:thumb, false),
+                  alt: alt_text(work)),
+        work)
+    else
+      link_to(
+        image_tag(blank_image_url,
+                  alt: alt_text(work)),
+        work)
+    end
+  end
 end

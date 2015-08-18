@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def show
     @work = Work.includes(:artist).visible.find(params[:id])
+    @additional_works = @work.artist.works.visible - [@work]
   end
 
   def acquire
