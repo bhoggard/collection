@@ -12,6 +12,7 @@ class MainControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:images)
     assert assigns(:image)
+    assert assigns(:prev)
     assert assigns(:next)
   end
 end
