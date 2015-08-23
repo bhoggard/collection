@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "main#index"
+  get 'installation(/:idx)', to: 'main#installation',
+                             defaults: { idx: 0 },
+                             constraints: { idx: /\d+/ },
+                             as: 'installation'
 
   resources :artists, only: [:index, :show]
 
@@ -11,9 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/login" => "sessions#new", :as => :login
-  post "/login" => "sessions#create", :as => :do_login
-  delete "/logout" => "sessions#destroy", :as => :logout
+  get "/login", to: "sessions#new", as: :login
+  post "/login", to: "sessions#create", as: :do_login
+  delete "/logout", to: "sessions#destroy", as: :logout
 
   namespace :admin do
     resources :nationalities
