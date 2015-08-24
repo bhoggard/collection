@@ -1,0 +1,21 @@
+- title 'Statistics'
+
+.row
+  %h4.page-title Statistics
+
+  .col-md-6
+
+    %table.table
+      %tbody
+        %tr
+          %th Total Artists
+          %td= number_with_delimiter(Artist.count)
+        %tr
+          %th Total Artworks
+          %td= number_with_delimiter(Work.count)
+
+    %p
+      %b
+        Note:
+      These numbers do not describe the entire collection, but only those works added to the database to date.   The collectors currently estimate the total number of works to be in excess of one thousand.
+

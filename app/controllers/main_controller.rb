@@ -37,7 +37,6 @@ class MainController < ApplicationController
       barry_james30s.jpg
     )
     idx = params[:idx].to_i
-    idx = 0 if idx >= @images.size
     @image = @images[idx]
     @prev = (idx == 0) ? @images.size - 1 : idx - 1
     @next = (idx == @images.size - 1) ? 0 : idx + 1

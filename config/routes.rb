@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'pages/about'
+  get 'pages/contact'
+  get 'pages/copyright'
+  get 'pages/dmca'
+  get 'pages/statistics'
+  get 'pages/press'
+
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create", as: :do_login
   delete "/logout", to: "sessions#destroy", as: :logout
