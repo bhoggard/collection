@@ -24,7 +24,7 @@
 - @artist_rows.each do |row|
   .row.vertical-align
     - row.each do |artist|
-      .col-xs-12
+      .col-xs-12.col-sm-3
         .thumbnail
           = artist_image(artist)
           .caption= artist.name
