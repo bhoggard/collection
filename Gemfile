@@ -15,9 +15,9 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'activerecord-import', require: false
 gem 'ranked-model'
-gem 'paperclip', '~> 4.3'
+gem 'paperclip'
 gem 'RedCloth'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'rails_autolink'
 gem 'mail_form'
 
