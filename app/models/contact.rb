@@ -11,7 +11,7 @@ class Contact < MailForm::Base
   def headers
     {
       subject: "Message from Hoggard Wagner Contact Form",
-      to: ENV["CONTACT_EMAIL"],
+      to: Rails.application.secrets.contact_email,
       from: %("#{name}" <#{email}>)
     }
   end
