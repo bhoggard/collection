@@ -18,7 +18,10 @@ class Image < ActiveRecord::Base
                     s3_headers: { 'Expires' => 1.year.from_now.httpdate },
                     s3_host_alias: Rails.application.secrets.cdn_url,
                     s3_protocol: 'https',
-                    url: ":s3_alias_url"
+                    url: ":s3_alias_url",
+                    convert_options: {
+                      all: "-quality 100 -strip"
+                    }
 
   validates_attachment_content_type :file, content_type: %r{\Aimage\/.*\Z}
   attr_reader :file_remote_url
