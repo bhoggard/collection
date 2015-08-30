@@ -18,22 +18,23 @@
 // for copyright notice
 $(function() {
   $("a#why-small").click(function() {
-    if($(this).data('dont')==1) return;
-    $(this).after(' Thumbnails are shown because we do not have permission to publish larger images. ' + 
-    'If you own the publication rights to this work, please <a href="/page/contact">contact us</a>.');
-    $(this).data('dont',1);
+    if ($(this).data('dont') === 1) return;
+    $(this).after('<br>Thumbnails are shown because we do not have permission to publish larger images. ' + 
+    'If you own the publication rights to this work, please <a href="/pages/contact">contact us</a>.');
+    $(this).data('dont', 1);
     return false;
   });
 });
 
 $(document).keydown(function(e){
-  if(e.which == 37 || e.which == 39) {
+  var link;
+  if (e.which === 37 || e.which === 39) {
     e.preventDefault();
-    if (e.which == 37) // left
+    if (e.which === 37) // left
       link = $('#prev');
     else
       link = $('#next');
-    if (link.length == 1) {
+    if (link.length === 1) {
       window.location = link.attr('href');
     }
   }
