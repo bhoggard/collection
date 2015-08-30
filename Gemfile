@@ -19,6 +19,7 @@ gem 'paperclip', '~> 4.3'
 gem 'RedCloth'
 gem 'aws-sdk'
 gem 'rails_autolink'
+gem 'mail_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

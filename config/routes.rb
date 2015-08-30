@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   root "main#index"
   get 'installation(/:idx)', to: 'main#installation',
                              defaults: { idx: 0 },
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
                              as: 'installation'
 
   resources :artists, only: [:index, :show]
+  resources :contacts, only: [:new, :create]
 
   resources :works, only: :show do
     collection do

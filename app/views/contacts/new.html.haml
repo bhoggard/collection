@@ -1,0 +1,19 @@
+- title 'Contact Form'
+
+.row
+  %h4.page-title Contact Form
+
+.row
+  .col-md-8
+
+    = simple_form_for @contact, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :name
+        = f.input :email, label: 'E-mail Address'
+        = f.input :message, as: :text
+        = f.input :nickname
+
+      .form-actions
+        = f.button :submit, 'send'
