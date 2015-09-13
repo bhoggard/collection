@@ -3,7 +3,7 @@
 .row
   .col-md-8
     = show_work_images
-    - unless @work.artist.show_large_images?
+    - if @work.images.any? && !@work.artist.show_large_images
       %p.why
         %a{href: '#', id: 'why-small'}= "Why #{@work.images.count > 1 ? 'are these images' : 'is this image'} small?"
     %br
