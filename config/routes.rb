@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'artists/index'
+  end
+
   get 'exhibitions/show'
 
   resources :contacts
@@ -37,6 +41,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: :logout
 
   namespace :admin do
+    resources :artists
     resources :nationalities
   end
 end

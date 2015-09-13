@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Admin
-  class NationalitiesControllerTest < ActionController::TestCase
+  class ArtistsControllerTest < ActionController::TestCase
     test "index should require login" do
       get :index
       assert_response 302

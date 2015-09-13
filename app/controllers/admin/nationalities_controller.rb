@@ -1,6 +1,5 @@
 module Admin
-  class NationalitiesController < ApplicationController
-    before_action :authenticate!
+  class NationalitiesController < AdminController
     before_action :set_nationality, only: [:show, :edit, :update, :destroy]
 
     # GET /nationalities

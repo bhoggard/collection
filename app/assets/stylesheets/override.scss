@@ -4,7 +4,28 @@
 }
 
 input.string, input.password {
-  width: 60%;
+  width: 240px;
+}
+
+input#artist_birth_year,
+input#artist_death_year {
+  width: 80px;
+}
+
+select#artist_gender {
+  width: 80px;
+}
+
+select#artist_nationality_id {
+  width: 240px;
+}
+
+input#artist_home_page {
+  width: 400px;
+}
+
+textarea.text {
+  width: 600px;
 }
 
 .simple_form abbr {
@@ -98,4 +119,13 @@ a#why-small {
 
 .contact_nickname {
   display: none;
+}
+
+.search-form {
+  margin-left: 15px;
+  padding: 10px;
+}
+
+.search-form label {
+  margin-right: 10px;
 }

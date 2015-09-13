@@ -21,6 +21,9 @@ gem 'aws-sdk', '< 2.0'
 gem 'rails_autolink'
 gem 'mail_form'
 gem 'puma'
+gem 'filterrific'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

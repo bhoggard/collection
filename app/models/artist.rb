@@ -5,9 +5,24 @@ class Artist < ActiveRecord::Base
   validates :name, :sort_name, presence: true
   validates :home_page, format: URI.regexp(%w(http https)), allow_blank: true
 
+  # gender info for select
+  GENDER_OPTIONS = ['female', 'male', 'ftm transgender', 'mtf transgender',
+                    'other']
+
+  filterrific(
+    default_filter_params: { sorted_by: 'sort_name' },
+    available_filters: [
+      :sorted_by,
+      :search_query
+    ]
+  )
+
   scope :by_letters, lambda { |letters|
     where('lower(left(sort_name, 1)) in (?)', letters.chars).order(:sort_name)
   }
+
+  scope :sorted_by, ->(sort) { order(sort) }
+  scope :search_query, ->(term) { where('name ILIKE ?', "%#{term}%") }
 
   def featured_work
     works.joins(:artist, :images).includes(:artist, :images)
