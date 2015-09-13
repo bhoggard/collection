@@ -1,0 +1,16 @@
+- title(@exhibition.title)
+
+.row
+  %h4.page-title= @exhibition.title
+
+- @work_rows.each do |row|
+  .row.vertical-align
+    - row.each_with_index do |work, index|
+      .col-xs-12.col-sm-3
+        .thumbnail
+          = link_to(image_tag(work.images.first.file.url(:thumb, false), alt: alt_text(work)), exhibition_works_path(@exhibition, index))
+          .caption= work.artist.name
+
+.row
+  .col-md-8
+    = textilize(@exhibition.description).html_safe
