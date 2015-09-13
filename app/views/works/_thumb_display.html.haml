@@ -1,2 +1,5 @@
-= image_tag(image ? image.file.url(:thumb, false) : blank_image_url, alt: alt_text(@work))
+- if exhibition
+  = link_to(image_tag(image ? image.file.url(:thumb, false) : blank_image_url, alt: alt_text(@work)), exhibition_works_path(@exhibition, @next))
+- else
+  = image_tag(image ? image.file.url(:thumb, false) : blank_image_url, alt: alt_text(@work))
 

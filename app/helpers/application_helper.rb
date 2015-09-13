@@ -27,13 +27,14 @@ module ApplicationHelper
     '/gray-thumbnail.png'
   end
 
-  def show_work_images
+  def show_work_images(exhibition = nil)
     if @admin || @work.artist.show_large_images?
       partial_path = 'works/image_display'
     else
       partial_path = 'works/thumb_display'
     end
     render partial: partial_path,
+           locals: { exhibition: exhibition },
            collection: @work.images,
            as: :image
   end

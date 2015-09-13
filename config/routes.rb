@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'exhibitions/show'
+
   resources :contacts
   root "main#index"
   get 'installation(/:idx)', to: 'main#installation',
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
 
   resources :artists, only: [:index, :show]
   resources :contacts, only: [:new, :create]
+  resources :exhibitions, only: :show
+
+  get 'exhibitions/:exhibition_id/works(/:idx)', to: 'exhibitions/works#show',
+                                                 defaults: { idx: 0 },
+                                                 constraints: { idx: /\d+/ },
+                                                 as: 'exhibition_works'
 
   resources :works, only: :show do
     collection do
