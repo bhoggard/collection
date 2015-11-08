@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'artists/index'
-  end
-
   get 'exhibitions/show'
 
   resources :contacts
@@ -12,7 +8,9 @@ Rails.application.routes.draw do
                              constraints: { idx: /\d+/ },
                              as: 'installation'
 
-  resources :artists, only: [:index, :show]
+  resources :artists, only: [:index, :show] do
+    get :autocomplete_artist_name, on: :collection
+  end
   resources :contacts, only: [:new, :create]
   resources :exhibitions, only: :show
 
@@ -23,9 +21,9 @@ Rails.application.routes.draw do
 
   resources :works, only: :show do
     collection do
-      get 'acquire'
-      get 'featured'
-      get 'recent'
+      get :acquire
+      get :featured
+      get :recent
     end
   end
 
@@ -43,5 +41,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :artists
     resources :nationalities
+    resources :works
   end
 end

@@ -24,6 +24,8 @@ gem 'puma'
 gem 'filterrific'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'jquery-ui-rails'
+gem 'bootstrap3_autocomplete_input'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

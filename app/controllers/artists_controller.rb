@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+  autocomplete :artist, :name
+
   def index
     letters = params[:letters] || 'ab'
     @artist_rows = Artist.by_letters(letters).each_slice(4)

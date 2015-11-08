@@ -1,0 +1,28 @@
+= simple_form_for [:admin, @work], html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, autofocus: true
+    = f.input :artist, as: :autocomplete, source_query: autocomplete_artist_name_artists_url
+    = f.association :location
+    = f.association :category
+    = f.input :featured
+    = f.input :published, as: :boolean
+    = f.input :work_year
+    = f.input :work_display_date
+    = f.input :dimensions, hint: 'h x w x d units, e.g., 8 x 10 inches'
+    = f.input :medium
+    = f.input :edition
+    = f.input :tags
+    = f.input :description
+    = f.input :acquisition_year
+    = f.input :provenance
+    = f.input :price_paid
+    = f.input :missing_information
+    = f.input :market_value
+    = f.input :market_value_year, hint: '4 digits'
+    = f.input :private_notes
+    = f.input :image_source
+
+  .form-actions
+    = f.button :submit

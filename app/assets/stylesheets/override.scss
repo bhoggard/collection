@@ -8,7 +8,10 @@ input.string, input.password {
 }
 
 input#artist_birth_year,
-input#artist_death_year {
+input#artist_death_year,
+input#work_work_year,
+input#work_market_value_year,
+input#work_acquisition_year {
   width: 80px;
 }
 
@@ -16,7 +19,12 @@ select#artist_gender {
   width: 80px;
 }
 
-select#artist_nationality_id {
+select#artist_nationality_id,
+select#work_location_id,
+select#work_category_id,
+input#work_artist,
+input#work_price_paid,
+input#work_market_value {
   width: 240px;
 }
 
@@ -24,8 +32,15 @@ input#artist_home_page {
   width: 400px;
 }
 
-textarea.text {
+textarea.text,
+input#work_title,
+input#work_tags {
   width: 600px;
+}
+
+textarea#work_description,
+textarea#work_private_notes {
+  height: 160px;
 }
 
 .simple_form abbr {
@@ -129,3 +144,11 @@ a#why-small {
 .search-form label {
   margin-right: 10px;
 }
+
+.form-horizontal {
+  div.boolean {
+    margin-left: 320px
+  }
+}
+
+

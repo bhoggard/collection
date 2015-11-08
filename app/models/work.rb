@@ -7,6 +7,21 @@ class Work < ActiveRecord::Base
   has_many :images, dependent: :destroy
   validates :location_id, :artist_id, :category_id, presence: true
 
+  filterrific(
+    default_filter_params: { sorted_by: 'created_at desc' },
+    available_filters: [
+      :title,
+      :with_location_id,
+      :with_category_id,
+      :with_artist_sort_name,
+      :sorted_by,
+      :search_query
+    ]
+  )
+
+  scope :sorted_by, ->(sort) { order(sort) }
+  scope :search_query, ->(term) { where('title ILIKE ?', "%#{term}%") }
+
   scope :featured_works, lambda {
     joins(:artist)
       .includes(:artist, :images)

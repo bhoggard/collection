@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require filterrific/filterrific-jquery
+//= require bootstrap3-typeahead.min
+//= require bootstrap3-autocomplete-input.min
 
 // for copyright notice
 $(function() {

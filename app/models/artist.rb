@@ -7,7 +7,7 @@ class Artist < ActiveRecord::Base
 
   # gender info for select
   GENDER_OPTIONS = ['female', 'male', 'ftm transgender', 'mtf transgender',
-                    'other']
+                    'gender queer']
 
   filterrific(
     default_filter_params: { sorted_by: 'sort_name' },
@@ -31,5 +31,9 @@ class Artist < ActiveRecord::Base
         and published = true")
       .order('featured DESC, acquisition_year DESC, works.created_at DESC')
       .first
+  end
+
+  def to_s
+    name
   end
 end
