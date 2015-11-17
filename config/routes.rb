@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :artists
     resources :nationalities
-    resources :works
+    resources :works do
+      member do
+        post :sort_images
+      end
+    end
   end
 end

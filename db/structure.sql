@@ -160,7 +160,8 @@ CREATE TABLE images (
     file_file_name character varying,
     file_content_type character varying,
     file_file_size integer,
-    file_updated_at timestamp without time zone
+    file_updated_at timestamp without time zone,
+    "position" integer
 );
 
 
@@ -701,4 +702,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150726004901');
 INSERT INTO schema_migrations (version) VALUES ('20150726004918');
 
 INSERT INTO schema_migrations (version) VALUES ('20150808225536');
+
+INSERT INTO schema_migrations (version) VALUES ('20151117161616');
 

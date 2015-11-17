@@ -11,7 +11,7 @@
         %tbody
           - works.each do |work|
             %tr
-              %td= link_to work.title, edit_admin_work_path(work)
+              %td= link_to work.title, [:admin, work]
               %td= work.artist.name
               %td
               %td= link_to 'Delete', [:admin, work], method: :delete, data: { confirm: 'Are you sure?' }

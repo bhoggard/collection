@@ -1,0 +1,37 @@
+- title(alt_text(@work))
+
+.row
+  .col-md-8.thumbnails
+    = render partial: 'image', collection: @work.images.order(:position)
+    %br
+  .col-md-4
+    = link_to 'Edit artwork', edit_admin_work_path(@work)
+    %br
+    - if @work.images.any? && !@work.artist.show_large_images
+      %p.no-image-permission
+        No image permission
+    %hr
+    %h5.title= @work.title
+    = link_to(@work.artist.name, @work.artist)
+    %br
+    = work_date(@work)
+    .work-details
+      = show_work_info(:medium)
+      = show_work_info(:dimensions)
+    .work-details
+      - if @work.provenance.present?
+        Provenance: 
+        = raw(textilize_without_paragraph(@work.provenance))
+      - if @work.acquisition_year.present?
+        %br
+        Acquisition Year: #{@work.acquisition_year}
+      %p
+        Category:
+        = @work.category.name
+    - if @work.description.present?
+      .work-details
+        %h5 Description
+        = raw(textilize(@work.description))
+
+:javascript
+  var work_id = #{@work.id};

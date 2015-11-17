@@ -1,6 +1,7 @@
 module Admin
   class WorksController < AdminController
-    before_action :set_work, only: [:show, :edit, :update, :destroy]
+    before_action :set_work,
+                  only: [:show, :edit, :update, :destroy, :sort_images]
 
     def index
       @filterrific = initialize_filterrific(
@@ -12,6 +13,9 @@ module Admin
 
     def new
       @work = Work.new
+    end
+
+    def show
     end
 
     def edit
@@ -43,10 +47,19 @@ module Admin
                   notice: 'Work was successfully deleted.'
     end
 
+    def sort_images
+      image_ids = params[:image]
+      @work.images.each do |i|
+        i.update_attribute(:position, image_ids.index(i.id.to_s) + 1)
+      end
+      render nothing: true
+    end
+
     private
 
     def set_work
-      @work = Work.find(params[:id])
+      @work = Work.joins(:artist, :images).includes(:artist, :images)
+              .find(params[:id])
     end
 
     def work_params

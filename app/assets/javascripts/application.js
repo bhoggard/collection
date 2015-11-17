@@ -17,6 +17,8 @@
 //= require filterrific/filterrific-jquery
 //= require bootstrap3-typeahead.min
 //= require bootstrap3-autocomplete-input.min
+//= require jquery-ui/sortable
+//= require images
 
 // for copyright notice
 $(function() {
