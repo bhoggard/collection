@@ -84,7 +84,7 @@ end
 def import_images(conn)
   Image.destroy_all
   images = []
-  conn.exec("select id, work_id, caption from images order by position") do |result|
+  conn.exec("select id, work_id, caption from images") do |result|
     result.each do |row|
       images << Image.new(row)
     end
