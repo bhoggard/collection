@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'exhibitions/show'
-
-  resources :contacts
   root "main#index"
   get 'installation(/:idx)', to: 'main#installation',
                              defaults: { idx: 0 },
@@ -34,6 +31,8 @@ Rails.application.routes.draw do
   get 'pages/statistics'
   get 'pages/press'
 
+  resources :contacts, only: [:new, :create]
+
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create", as: :do_login
   delete "/logout", to: "sessions#destroy", as: :logout
@@ -42,6 +41,7 @@ Rails.application.routes.draw do
     resources :artists
     resources :nationalities
     resources :works do
+      resources :images, only: [:create, :destroy]
       member do
         post :sort_images
       end

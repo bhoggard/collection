@@ -38,5 +38,9 @@ module Collection
     end
 
     config.active_record.schema_format = :sql
+
+    config.imgix = {
+      source: "hoggardwagner.imgix.net"
+    }
   end
 end

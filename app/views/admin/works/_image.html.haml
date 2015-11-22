@@ -1,5 +1,5 @@
 .col-xs-12.col-sm-3{id: "image_#{image.id}"}
   %li.thumbnail
-    = image_tag(image.file.url(:thumb, false), alt: alt_text(@work))
+    = thumb_image_tag(image, alt_text(@work))
     .caption= image.caption
 

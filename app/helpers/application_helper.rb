@@ -27,6 +27,16 @@ module ApplicationHelper
     '/gray-thumbnail.png'
   end
 
+  def large_image_tag(image, alt)
+    ix_image_tag(image.path, h: 800, w: 800,
+                             fit: 'max', format: 'auto', alt: alt)
+  end
+
+  def thumb_image_tag(image, alt)
+    ix_image_tag(image.path, h: 200, w: 200,
+                             fit: 'max', format: 'auto', alt: alt)
+  end
+
   def show_work_images(exhibition = nil)
     if @admin || @work.artist.show_large_images?
       partial_path = 'works/image_display'
@@ -46,29 +56,17 @@ module ApplicationHelper
   def artist_image(artist)
     work = artist.featured_work
     if work && work.images.any?
-      link_to(
-        image_tag(work.images.first.file.url(:thumb, false),
-                  alt: alt_text(work)),
-        artist)
+      link_to(thumb_image_tag(work.images.first, alt_text(work)), artist)
     else
-      link_to(
-        image_tag(blank_image_url,
-                  alt: artist.name),
-        artist)
+      link_to(image_tag(blank_image_url, alt: artist.name), artist)
     end
   end
 
   def work_thumbnail(work)
     if work.images.any?
-      link_to(
-        image_tag(work.images.first.file.url(:thumb, false),
-                  alt: alt_text(work)),
-        work)
+      link_to(thumb_image_tag(work.images.first, alt_text(work)), work)
     else
-      link_to(
-        image_tag(blank_image_url,
-                  alt: alt_text(work)),
-        work)
+      link_to(image_tag(blank_image_url, alt: alt_text(work)), work)
     end
   end
 end
