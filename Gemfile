@@ -15,9 +15,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'activerecord-import', require: false
 gem 'ranked-model'
-gem 'paperclip'
 gem 'RedCloth'
-gem 'aws-sdk', '< 2.0'
 gem 'rails_autolink'
 gem 'mail_form'
 gem 'puma'
@@ -27,6 +25,7 @@ gem 'bootstrap-kaminari-views'
 gem 'jquery-ui-rails'
 gem 'bootstrap3_autocomplete_input'
 gem 'imgix-rails'
+gem 'carrierwave_direct'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

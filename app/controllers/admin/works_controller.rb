@@ -58,8 +58,7 @@ module Admin
     private
 
     def set_work
-      @work = Work.joins(:artist, :images).includes(:artist, :images)
-              .find(params[:id])
+      @work = Work.includes(:artist, :images).find(params[:id])
     end
 
     def work_params

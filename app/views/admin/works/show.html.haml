@@ -5,8 +5,8 @@
     = render partial: 'image', collection: @work.images.order(:position)
     %br
   .col-md-4
-    = link_to 'Edit artwork', edit_admin_work_path(@work)
-    %br
+    %p= link_to 'Edit artwork', edit_admin_work_path(@work)
+    %p= link_to 'Add image', new_admin_work_image_path(@work)
     - if @work.images.any? && !@work.artist.show_large_images
       %p.no-image-permission
         No image permission

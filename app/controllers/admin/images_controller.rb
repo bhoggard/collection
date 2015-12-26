@@ -1,27 +1,21 @@
 module Admin
   class ImagesController < AdminController
-    before_action :set_work, only: :create
-    def index
+    before_action :set_work
+
+    def new
+      @uploader = Image.new.image_file
+      @uploader.success_action_redirect = add_admin_work_images_url(@work)
     end
 
-    def create
-      @image = @work.images.new(image_params)
-      # if @image.save
-      #   render json: { message: "success", fileID: @image.id }, status: 200
-      # else
-      #   render json: { error: @image.errors.full_messages.join(',') },
-      #          status: 400
-      # end
+    def add
+      @work.images.create!(path: params[:key])
+      redirect_to [:admin, @work]
     end
 
     private
 
     def set_work
-      @work = Work.find(params[:image].delete(:work_id))
-    end
-
-    def image_params
-      params.permit(:url)
+      @work = Work.find(params[:work_id])
     end
   end
 end

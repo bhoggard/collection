@@ -41,7 +41,9 @@ Rails.application.routes.draw do
     resources :artists
     resources :nationalities
     resources :works do
-      resources :images, only: [:create, :destroy]
+      resources :images, only: [:new, :destroy] do
+        get :add, on: :collection
+      end
       member do
         post :sort_images
       end

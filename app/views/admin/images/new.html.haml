@@ -1,0 +1,9 @@
+- title 'Add Image'
+
+%h3
+  New image for
+  = @work.title
+
+= direct_upload_form_for @uploader do |f|
+  %p= f.file_field :image_file
+  = f.submit 'upload'
