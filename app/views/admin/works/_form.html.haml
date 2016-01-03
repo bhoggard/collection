@@ -1,9 +1,10 @@
+- protocol = Rails.env.production? ? 'https' : 'http'
 = simple_form_for [:admin, @work], html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :title, autofocus: true
-    = f.input :artist, as: :autocomplete, source_query: autocomplete_artist_name_artists_url
+    = f.input :artist, as: :autocomplete, source_query: autocomplete_artist_name_artists_url(protocol: protocol)
     = f.association :location
     = f.association :category
     = f.input :featured
