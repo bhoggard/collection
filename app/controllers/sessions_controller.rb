@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = User.find_by_name(session_params[:name])
     if authenticate(user)
       session[:user_id] = user.id
-      redirect_to admin_nationalities_path, notice: "Logged in!"
+      redirect_to admin_works_path, notice: "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
       render "new"
