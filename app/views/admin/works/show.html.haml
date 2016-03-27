@@ -35,3 +35,8 @@
 
 :javascript
   var work_id = #{@work.id};
+  $(document).ready(function() {
+    $(".caption").editable({
+      emptytext: "click to edit"
+    });
+  });

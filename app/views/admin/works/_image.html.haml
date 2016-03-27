@@ -1,5 +1,7 @@
 .col-xs-12.col-sm-3{id: "image_#{image.id}"}
   %li.thumbnail
     = thumb_image_tag(image, alt_text(@work))
-    .caption= image.caption
+    .caption{ 'data-pk' => image.id, 'data-url' => '/admin/images/caption_edit' }= image.caption
+    %p{ align: "center" }
+      = link_to 'delete', '#', data: { confirm: 'Are you sure?', pk: image.id }, class: 'delete_image'
 

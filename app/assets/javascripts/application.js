@@ -19,6 +19,7 @@
 //= require bootstrap3-autocomplete-input.min
 //= require jquery-ui/sortable
 //= require images
+//= require js/bootstrap-editable.min
 
 // for copyright notice
 $(function() {

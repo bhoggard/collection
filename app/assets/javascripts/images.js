@@ -10,4 +10,15 @@ $(function(){
       $.post('/admin/works/' + work_id + '/sort_images', $(this).sortable('serialize'));
     }
   });
+
+  $(".delete_image").click(function(e) {
+    e.preventDefault();
+    $.ajax({ 
+        url: "/admin/images/" + $(this).data("pk"), 
+        type: "delete",
+        success: function(response) {
+          $('.thumbnails').html(response).sortable('refresh');
+        }
+      });
+    });
 });

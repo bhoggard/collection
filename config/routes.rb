@@ -39,6 +39,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :artists
+    resources :images, only: :destroy do
+      collection do
+        post :caption_edit
+      end
+    end
     resources :nationalities
     resources :works do
       resources :images, only: [:new, :destroy] do
