@@ -14,7 +14,7 @@
     = f.input :dimensions, hint: 'h x w x d units, e.g., 8 x 10 inches'
     = f.input :medium
     = f.input :edition
-    = f.input :tags
+    = f.input :tags, input_html: { value: @work.tags.join(', ') }
     = f.input :description
     = f.input :acquisition_year
     = f.input :provenance

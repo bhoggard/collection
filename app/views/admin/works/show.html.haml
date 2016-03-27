@@ -28,6 +28,10 @@
       %p
         Category:
         = @work.category.name
+      - if @work.tags.any?
+        %p
+          Tags:
+          = @work.tags.join(', ')
     - if @work.description.present?
       .work-details
         %h5 Description

@@ -7,6 +7,10 @@ class Work < ActiveRecord::Base
   has_many :images, -> { order(:position) }, dependent: :destroy
   validates :location_id, :artist_id, :category_id, presence: true
 
+  def tags=(tags_list)
+    super(tags_list.split(',').map(&:strip).compact.reject(&:blank?))
+  end
+
   filterrific(
     default_filter_params: { sorted_by: 'created_at desc' },
     available_filters: [
