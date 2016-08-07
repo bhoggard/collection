@@ -7,7 +7,7 @@ class Artist < ActiveRecord::Base
 
   # gender info for select
   GENDER_OPTIONS = ['female', 'male', 'ftm transgender', 'mtf transgender',
-                    'gender queer']
+                    'gender queer'].freeze
 
   filterrific(
     default_filter_params: { sorted_by: 'sort_name' },
@@ -26,11 +26,11 @@ class Artist < ActiveRecord::Base
 
   def featured_work
     works.joins(:artist, :images).includes(:artist, :images)
-      .where("(select count(id)
+         .where("(select count(id)
         from images where work_id=works.id) > 0
         and published = true")
-      .order('featured DESC, acquisition_year DESC, works.created_at DESC')
-      .first
+         .order('featured DESC, acquisition_year DESC, works.created_at DESC')
+         .first
   end
 
   def to_s
