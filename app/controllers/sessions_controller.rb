@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   def new
     redirect_to events_path if current_user
-    @login_url = if Rails.env.production?
-                   do_login_url(protocol: 'https')
-                 else
-                   do_login_url
-                 end
+    if Rails.env.production?
+      @login_url = do_login_url(protocol: 'https')
+    else
+      @login_url = do_login_url
+    end
   end
 
   def create

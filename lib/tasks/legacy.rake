@@ -69,7 +69,7 @@ def import_exhibition_works(conn)
 end
 
 def transform_work(work)
-  work.title = '' if work.title.strip.casecmp('unknown').zero?
+  work.title = '' if work.title.strip.downcase == 'unknown'
   work.featured = false if work.featured.nil?
 end
 
