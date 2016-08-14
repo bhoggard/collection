@@ -18,6 +18,10 @@
     .work-details
       = show_work_info(:medium)
       = show_work_info(:dimensions)
+      - if @work.edition.present?
+        %p
+          Edition:
+          = @work.edition
     .work-details
       - if @work.provenance.present?
         Provenance: 
@@ -32,6 +36,10 @@
         %p
           Tags:
           = @work.tags.join(', ')
+      - if @work.price_paid.present?
+        %p
+          Price paid:
+          = number_to_currency(@work.price_paid)
     - if @work.description.present?
       .work-details
         %h5 Description

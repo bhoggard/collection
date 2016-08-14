@@ -15,6 +15,10 @@
     .work-details
       = show_work_info(:medium)
       = show_work_info(:dimensions)
+      - if @work.edition.present?
+        %p
+          Edition:
+          = @work.edition
     .work-details
       - if @work.provenance.present?
         Provenance: 
