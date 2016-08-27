@@ -1,64 +1,19 @@
 module Admin
-  class NationalitiesController < AdminController
-    before_action :set_nationality, only: [:show, :edit, :update, :destroy]
+  class NationalitiesController < Admin::ApplicationController
+    # To customize the behavior of this controller,
+    # simply overwrite any of the RESTful actions. For example:
+    #
+    # def index
+    #   super
+    #   @resources = Nationality.all.paginate(10, params[:page])
+    # end
 
-    # GET /nationalities
-    def index
-      @nationalities = Nationality.all.order(:name)
-    end
+    # Define a custom finder by overriding the `find_resource` method:
+    # def find_resource(param)
+    #   Nationality.find_by!(slug: param)
+    # end
 
-    # GET /nationalities/1
-    def show
-    end
-
-    # GET /nationalities/new
-    def new
-      @nationality = Nationality.new
-    end
-
-    # GET /nationalities/1/edit
-    def edit
-    end
-
-    # POST /nationalities
-    def create
-      @nationality = Nationality.new(nationality_params)
-
-      if @nationality.save
-        redirect_to admin_nationalities_url,
-                    notice: 'Nationality was successfully created.'
-      else
-        render :new
-      end
-    end
-
-    # PATCH/PUT /nationalities/1
-    def update
-      if @nationality.update(nationality_params)
-        redirect_to admin_nationalities_url,
-                    notice: 'Nationality was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    # DELETE /nationalities/1
-    def destroy
-      @nationality.destroy
-      redirect_to admin_nationalities_url,
-                  notice: 'Nationality was successfully deleted.'
-    end
-
-    private
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_nationality
-      @nationality = Nationality.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def nationality_params
-      params.require(:nationality).permit(:name)
-    end
+    # See https://administrate-docs.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end

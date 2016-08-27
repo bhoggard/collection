@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :artists
+    resources :categories
+    resources :exhibitions
+    resources :images
+    resources :locations
+    resources :nationalities
+    resources :users
+    resources :works
+    root to: "artists#index"
+  end
+
   root "main#index"
   get 'installation(/:idx)', to: 'main#installation',
                              defaults: { idx: 0 },
@@ -36,22 +48,4 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create", as: :do_login
   delete "/logout", to: "sessions#destroy", as: :logout
-
-  namespace :admin do
-    resources :artists
-    resources :images, only: :destroy do
-      collection do
-        post :caption_edit
-      end
-    end
-    resources :nationalities
-    resources :works do
-      resources :images, only: [:new, :destroy] do
-        get :add, on: :collection
-      end
-      member do
-        post :sort_images
-      end
-    end
-  end
 end

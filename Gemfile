@@ -26,6 +26,8 @@ gem 'jquery-ui-rails'
 gem 'bootstrap3_autocomplete_input'
 gem 'imgix-rails'
 gem 'carrierwave_direct'
+gem 'administrate', '~> 0.2.2'
+gem 'bourbon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

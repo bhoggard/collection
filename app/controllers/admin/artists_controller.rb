@@ -1,60 +1,19 @@
 module Admin
-  class ArtistsController < AdminController
-    before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  class ArtistsController < Admin::ApplicationController
+    # To customize the behavior of this controller,
+    # simply overwrite any of the RESTful actions. For example:
+    #
+    # def index
+    #   super
+    #   @resources = Artist.all.paginate(10, params[:page])
+    # end
 
-    def index
-      @filterrific = initialize_filterrific(
-        Artist,
-        params[:filterrific]
-      ) || return
-      @artists = @filterrific.find.page(params[:page])
-    end
+    # Define a custom finder by overriding the `find_resource` method:
+    # def find_resource(param)
+    #   Artist.find_by!(slug: param)
+    # end
 
-    def new
-      @artist = Artist.new
-    end
-
-    def edit
-    end
-
-    def create
-      @artist = Artist.new(artist_params)
-
-      if @artist.save
-        redirect_to admin_artists_url,
-                    notice: 'Artist was successfully created.'
-      else
-        render :new
-      end
-    end
-
-    def update
-      if @artist.update(artist_params)
-        redirect_to admin_artists_url,
-                    notice: 'Artist was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    def destroy
-      @artist.destroy
-      redirect_to admin_artists_url,
-                  notice: 'Artist was successfully deleted.'
-    end
-
-    private
-
-    def set_artist
-      @artist = Artist.find(params[:id])
-    end
-
-    def artist_params
-      params.require(:artist).permit(:name, :sort_name, :home_page,
-                                     :birth_year, :gender, :death_year, :notes,
-                                     :show_large_images, :email, :telephone,
-                                     :address, :private_notes,
-                                     :missing_information, :nationality_id)
-    end
+    # See https://administrate-docs.herokuapp.com/customizing_controller_actions
+    # for more information
   end
 end
