@@ -30,7 +30,8 @@ class Work < ActiveRecord::Base
     joins(:artist)
       .includes(:artist, :images)
       .where("(select count(id) from images where work_id=works.id) > 0
-        and published = true and artists.show_large_images = true")
+        and featured = true and published = true
+        and artists.show_large_images = true")
   }
 
   scope :visible, -> { where(published: true) }
