@@ -15,10 +15,10 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: QeKTDjYKl28IBayCfpVPKNtHl1TI7vYCLrRlEkHF9cCOUhbGeKV7pK81C+7e5B23sSjiKMqOjhCLBUVHtlZFp4g2ad+y5oB5+kNa1vJE0FqosQY1h5jbjDN5q0s3/G1/IiXoEQ2LSeP4vD9jP9XpFE/SCF0+naL30mB1fwBuPjKrorjxeYyUkItfzui95ugdu1JqOZ0+tAculTHuLCPK3y/hM43t3uZAv0wiEgwlvggZli1to2zyFgii2mEkQic1Q4fPm+HVSmosyaAG6Z1TVQQqe4EgE91i3EWUnkJT1Y+smz/9xjVEVwlamsY21FZR1YEbII/7QXK4QZ4/66TfxyfnoSQwr6SwucU24zQAAZ9r6m3oSMbcDAy1/0K4x3ATcNV3HAUIsuN/EfikrW1ngOE7pspHrlsMesHE2MjrFYK3aID7Nw1p7U12xpxzo/KF1pabTlDVhphR55y14WDaAxdww7ibxJRbNrZxENYWEAo70XXpH9NOSnKIjUw7OAQb+8tNASIbk0Eqr+PnpLREHombnClTU1dsfb7QfZsntn9TGWLSpKlti7EEv/DRm4ptPV+OUg7QjZOwmapJo8+KZq92TPrC+IyVOjsN8cMlyVJCDBKKe5/P+RGTAn7Kxc09Iqua1HhrF6K/bHn4+Aw5TLttGKqALS/vzLj0T+j7N+k=
+    secure: iN5hBzfYfAiMiUPpqhGEFWALrX7tMtZlP1QeSfiGYdNeCd6JALGCW3soZn6lH2Ro/gnoy7++peHrCitOrm9vXpMaCvtQG4V4kBBKbxILyY9WLj/3VmqkgoRvU93TXVXZI8DFv5vOAwkM2XL0Miv8G+MG+/H1WFvHUGbgXwdhWnpSv/I2Iw+IaYqdl00BNeAWZ1W+H/ZV+J/8wsYvobwSiYzIrZcISkOFj3lZbj/dtbhsf/4MlzXsxzhLj2bQ8aifHDj+73jd0VFyqGNwAtMQ7FL6sD/iR0UTCV/4dY53B0yQtanU+Hgyoq9l9LV4ZAGqdv44Co3OdsH10YoA4Ou649O6qDiwM2XmNEweQxTirrDWlDEZvgigUuN0+6b4X8FGw3hi3vGMoEbyYcrMW4+ju0MDUw5RDbmrFeRXxkIcn2/QzxyVoY0ElE6NsLr+mLKwEskTGfFS5CN5BzDGD9FIaimsD79lygqu8U74yNBnU/HixgnFryBiRDBzmNGGOr9OqoyA7gkbEQqs8x/slK6HrIe90PYWyZSNOxQE2Zu7FyHfLWHNfjEunLyTaf1+nHsGDXqBYVDmpGT0lwiAbTmjcVW/jdYk/uJg+Osn59Sx9UTcaWQXpuvUutCAEefUgt0Npp/KuhS2dA740U/2ikkj1SPNyUGNWmMMdaXNX189XBA=
   app: hoggardwagner
   on:
     repo: bhoggard/collection
   run:
-    - "rake db:migrate"
-    - restart
+  - rake db:migrate
+  - restart
