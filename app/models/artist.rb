@@ -36,4 +36,20 @@ class Artist < ActiveRecord::Base
   def to_s
     name
   end
+
+  def self.csv_columns
+    %w(first_name last_name display_name home_page lifetime biography
+       telephone email private_notes missing_information nationality)
+  end
+
+  def to_csv
+    (first,last) = name.split
+    if birth_year
+      lifetime = "#{birth_year}-#{death_year}"
+    else
+      lifetime = ""
+    end
+    [first, last, name, home_page, lifetime, notes, telephone, email, 
+     private_notes, missing_information, nationality.try(:name)]
+  end
 end
