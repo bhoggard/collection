@@ -38,7 +38,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.csv_columns
-    %w(first_name last_name display_name home_page lifetime biography
+    %w(id kind first_name last_name display_name home_page lifetime biography
        telephone email private_notes missing_information nationality)
   end
 
@@ -49,7 +49,7 @@ class Artist < ActiveRecord::Base
     else
       lifetime = ""
     end
-    [first, last, name, home_page, lifetime, notes, telephone, email, 
+    [id, "individual", first, last, name, home_page, lifetime, notes, telephone, email, 
      private_notes, missing_information, nationality.try(:name)]
   end
 end

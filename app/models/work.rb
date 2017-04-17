@@ -52,4 +52,26 @@ class Work < ActiveRecord::Base
       .order('acquisition_year DESC, created_at DESC')
       .limit(20)
   }
+
+  def self.csv_columns
+    %w(id title artist_id work_year dimensions medium edition 
+      acquisition_year description provenance price_paid
+      private_notes missing_information location_id category_id
+      keywords)
+  end
+
+  # for CSV export
+  def textilize_without_paragraph(text)
+    RedCloth.new(text || '', [:lite_mode]).to_html
+  end
+
+  def to_csv
+    [id, title, artist.id, work_display_date || work_year,
+     dimensions, medium, edition, acquisition_year,
+     textilize(description),
+     textilize_without_paragraph(provenance),
+     price_paid, private_notes, missing_information,
+     location.id, category.id, tags.join(',')
+    ]
+  end
 end

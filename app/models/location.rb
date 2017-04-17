@@ -3,10 +3,10 @@ class Location < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def self.csv_columns
-    %w(name)
+    %w(id name)
   end
 
   def to_csv
-    [name]
+    [id, name]
   end
 end
